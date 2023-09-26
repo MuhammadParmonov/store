@@ -18,3 +18,16 @@ def product_view(request):
         "products": products
     }
     return render(request, 'products.html', context)
+
+def profil_page(request):
+    return render(request, 'profile.html')
+
+def buyurtma_page(request):
+    return render(request, 'buyurtmalar.html')
+
+def category_page(request, cat_id):
+    product = Product.objects.filter(category=cat_id)
+    context = {
+        "products": product
+    }
+    return render(request, 'products.html', context)
