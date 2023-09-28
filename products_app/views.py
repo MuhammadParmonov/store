@@ -27,7 +27,9 @@ def buyurtma_page(request):
 
 def category_page(request, cat_id):
     product = Product.objects.filter(category=cat_id)
+    category = ProductCategory.objects.all()
     context = {
-        "products": product
+        "products": product,
+        "categories": category
     }
     return render(request, 'products.html', context)
