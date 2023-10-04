@@ -26,30 +26,33 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'products:product_view' %}">Каталог <i class="fas fa-shopping-bag"></i> </a>
                     </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                               <i class="fas fa-user-circle"></i>
+                          </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                             <li>
+                                 <a class="dropdown-item" href="{% url 'products:profil_view' %}">Профиль</a>
+                             </li>
+                             <li><a class="dropdown-item" href="{% url 'products:buyurtma_view' %}">Заказы</a></li>
+                             <li><a class="dropdown-item" href="#">Админ-панель</a></li>
+                             <li>
+                                 <hr class="dropdown-divider">
+                             </li>
+                             <li>
+                                    <a class="dropdown-item" href="{% url 'users:logout_view' %}">
+                                       Выйти
+                                    </a>
+                             </li>
+                            </ul>
+                        </li>
+                    {% else  %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'users:login_view' %}">Войти <i class="fas fa-sign-in-alt"></i></a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user-circle"></i>
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li>
-                                <a class="dropdown-item" href="{% url 'products:profil_view' %}">Профиль</a>
-                            </li>
-                            <li><a class="dropdown-item" href="{% url 'products:buyurtma_view' %}">Заказы</a></li>
-                            <li><a class="dropdown-item" href="#">Админ-панель</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    Выйти
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
